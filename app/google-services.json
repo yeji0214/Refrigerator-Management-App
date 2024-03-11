@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "303314011822",
+    "project_id": "refrigeratorappkotlin",
+    "storage_bucket": "refrigeratorappkotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303314011822:android:1a7232dfebed5da7790f3f",
+        "android_client_info": {
+          "package_name": "com.example.refrigerator_management_app_kotlin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUMqmSwAytr75wFtih2TUhZz3EmhlNY_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
