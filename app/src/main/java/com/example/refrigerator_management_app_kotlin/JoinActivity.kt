@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 class JoinActivity : AppCompatActivity() {
     private lateinit var activityJoinBinding: ActivityJoinBinding // RegisterActivity binding
-    //private lateinit var warningDialog: WarningDialog // 경고 다이얼로그
+    private lateinit var warningDialog: WarningDialog // 경고 다이얼로그
     //private lateinit var informationDialog: InformationDialog // 안내 다이얼로그
     private lateinit var firebaseAuth: FirebaseAuth // 파이어베이스 인증
     private lateinit var databaseReference: DatabaseReference // 실시간 데이터베이스
@@ -102,14 +102,14 @@ class JoinActivity : AppCompatActivity() {
 
             // 이메일과 비밀번호가 비어있을 경우 경고
             if (email.isEmpty() && password.isEmpty()) {
-//                warningDialog = WarningDialog(this@JoinActivity, 1)
-//                warningDialog.show()
+                warningDialog = WarningDialog(this@JoinActivity, 1)
+                warningDialog.show()
             } else if (password.length < 6) { // 비밀번호가 6글자 이상 넘지 않으면 경고
-//                warningDialog = WarningDialog(this@JoinActivity, 2)
-//                warningDialog.show()
+                warningDialog = WarningDialog(this@JoinActivity, 2)
+                warningDialog.show()
             } else if (joinPwCheckFlag == 0) { // 비밀번호 확인 절차를 진행하지 않은 경우
-//                warningDialog = WarningDialog(this@JoinActivity, 3)
-//                warningDialog.show()
+                warningDialog = WarningDialog(this@JoinActivity, 3)
+                warningDialog.show()
             } else {
                 // firebase에 이메일과 비밀번호를 이용하여 사용자 계정 생성 시작
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -145,8 +145,8 @@ class JoinActivity : AppCompatActivity() {
                             )
                         } else {
                             // 회원가입 실패 다이얼로그
-//                            warningDialog = WarningDialog(this@JoinActivity, 4)
-//                            warningDialog.show()
+                            warningDialog = WarningDialog(this@JoinActivity, 4)
+                            warningDialog.show()
 
                             Log.e("회원가입 실패", "")
                         }
