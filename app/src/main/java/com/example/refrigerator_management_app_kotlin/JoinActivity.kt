@@ -119,17 +119,21 @@ class JoinActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             // 방금 회원가입 처리가 된 user를 가져온다.
                             val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
-                            //val userAccount = UserAccount()
+                            val userAccount = UserAccount()
                             // userAccount에 방금 회원가입된 user의 정보들을 설정한다. (Id, Email, Password)
 //                            firebaseUser?.uid?.let { userAccount.idToken = it }
 //                            userAccount.userId = id
 //                            firebaseUser?.email?.let { userAccount.userEmail = it }
 //                            userAccount.userPw = password
+                            userAccount.setIdToken((firebaseUser!!.uid))
+                            userAccount.setUserId(id)
+                            userAccount.setUserEmail(firebaseUser.email)
+                            userAccount.setUserPw(password)
 
                             // 생성된 userAccount를 user의 userUid의 child로 database에 삽입.
                             // 회원가입 시 사용자가 입력한 id의 child로 삽입하는 방법도 생각해보기
-//                            databaseReference.child("UserAccount").child(firebaseUser!!.uid)
-//                                .setValue(userAccount)
+                            databaseReference.child("UserAccount").child(firebaseUser.uid)
+                                .setValue(userAccount)
 
                             // 회원가입 성공 다이얼로그
 //                            informationDialog = InformationDialog(this@JoinActivity, 1)
@@ -137,8 +141,7 @@ class JoinActivity : AppCompatActivity() {
 
                             Log.e(
                                 "회원가입 성공",
-                                "${firebaseAuth.currentUser}"
-                                //"${userAccount.idToken} ${userAccount.userId} ${userAccount.userEmail} ${userAccount.userPw}"
+                                "${databaseReference} ${userAccount.getIdToken()} ${userAccount.getUserId()} ${userAccount.getUserEmail()} ${userAccount.getUserPw()}"
                             )
                         } else {
                             // 회원가입 실패 다이얼로그
