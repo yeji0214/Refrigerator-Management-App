@@ -43,5 +43,12 @@ class StartActivity : AppCompatActivity() {
             val intent = Intent(this@StartActivity, LoginActivity::class.java)
             startActivity(intent)
         })
+
+        // 회원가입 액티비티 이동 버튼 클릭
+        startJoinButton.setOnClickListener(View.OnClickListener {
+            // 로그인 화면으로 이동
+            val intent = Intent(this@StartActivity, JoinActivity::class.java)
+            startActivity(intent)
+        })
     }
 }
