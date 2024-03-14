@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var activityLoginBinding: ActivityLoginBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
-    //private lateinit var warningDialog: WarningDialog
+    private lateinit var warningDialog: WarningDialog
     private lateinit var firstLoginEmail: EditText
     private lateinit var firstLoginPw: EditText
     private lateinit var loginButton: ImageView
@@ -46,8 +46,8 @@ class LoginActivity : AppCompatActivity() {
             Log.e("LoginActivity", "email = $email, password = $password")
 
             if (email.isEmpty() || password.isEmpty()) {
-//                warningDialog = WarningDialog(this@LoginActivity, 1)
-//                warningDialog.show()
+                warningDialog = WarningDialog(this@LoginActivity, 1)
+                warningDialog.show()
             } else {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this@LoginActivity, OnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -69,8 +69,8 @@ class LoginActivity : AppCompatActivity() {
                         }
 
                     } else {
-//                        warningDialog = WarningDialog(this@LoginActivity, 7)
-//                        warningDialog.show()
+                        warningDialog = WarningDialog(this@LoginActivity, 7)
+                        warningDialog.show()
                         Log.e("로그인 실패", "")
                     }
                 })

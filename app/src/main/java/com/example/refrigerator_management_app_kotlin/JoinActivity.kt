@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 class JoinActivity : AppCompatActivity() {
     private lateinit var activityJoinBinding: ActivityJoinBinding // RegisterActivity binding
     private lateinit var warningDialog: WarningDialog // 경고 다이얼로그
-    //private lateinit var informationDialog: InformationDialog // 안내 다이얼로그
+    private lateinit var informationDialog: InformationDialog // 안내 다이얼로그
     private lateinit var firebaseAuth: FirebaseAuth // 파이어베이스 인증
     private lateinit var databaseReference: DatabaseReference // 실시간 데이터베이스
     private lateinit var joinPwCheckWarningImage: ImageView // 회원가입 비밀번호 확인 오류 이미지
@@ -121,10 +121,6 @@ class JoinActivity : AppCompatActivity() {
                             val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
                             val userAccount = UserAccount()
                             // userAccount에 방금 회원가입된 user의 정보들을 설정한다. (Id, Email, Password)
-//                            firebaseUser?.uid?.let { userAccount.idToken = it }
-//                            userAccount.userId = id
-//                            firebaseUser?.email?.let { userAccount.userEmail = it }
-//                            userAccount.userPw = password
                             userAccount.setIdToken((firebaseUser!!.uid))
                             userAccount.setUserId(id)
                             userAccount.setUserEmail(firebaseUser.email)
@@ -136,8 +132,8 @@ class JoinActivity : AppCompatActivity() {
                                 .setValue(userAccount)
 
                             // 회원가입 성공 다이얼로그
-//                            informationDialog = InformationDialog(this@JoinActivity, 1)
-//                            informationDialog.show()
+                            informationDialog = InformationDialog(this@JoinActivity, 1)
+                            informationDialog.show()
 
                             Log.e(
                                 "회원가입 성공",
