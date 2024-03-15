@@ -12,7 +12,7 @@ import androidx.core.app.ActivityCompat
 import com.example.refrigerator_management_app_kotlin.databinding.DialogInformationBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class InformationDialog(context: Context, private val myMode: Int) : Dialog(context) {
+class InformationDialog(private val activity: Activity, private val myMode: Int) : Dialog(activity) {
     private lateinit var dialogInformationBinding: DialogInformationBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
@@ -41,34 +41,21 @@ class InformationDialog(context: Context, private val myMode: Int) : Dialog(cont
             }
         }
 
-        // 버튼 리스너 설정
+        // yesButton 클릭 이벤트 핸들러
         yesButton.setOnClickListener {
             Log.e("InformationDialog의 ", "YES 버튼이 눌림")
             when (myMode) {
-                // 회원가입 성공시
-                // yesButton 누르면 로그인 화면으로 돌아감.
                 1 -> {
-                    val intent = Intent(context, LoginActivity::class.java)
-                    if (context is Activity) {
-                        context.startActivity(intent)
-                        ActivityCompat.finishAffinity(context as Activity)
+                    Log.e("InformationDialog의 ", "회원가입 성공 모드")
+                    val intent = Intent(activity, LoginActivity::class.java)
+                    activity.startActivity(intent)
+                    if (activity !is LoginActivity) {
+                        Log.e("InformationDialog의 ", "LoginActivity가 아닙니다. Activity를 종료합니다.")
+                        activity.finishAffinity()
                     }
                 }
-                // 로그아웃
-                2 -> {
-                    firebaseAuth.signOut()
-                    val intent = Intent(context, StartActivity::class.java)
-                    if (context is Activity) {
-                        context.startActivity(intent)
-                        ActivityCompat.finishAffinity(context as Activity)
-                        Log.e("로그아웃 성공", "")
-                    }
-                }
-                // 앱 종료
-                3 -> {
-                    if (context is Activity) {
-                        ActivityCompat.finishAffinity(context as Activity)
-                    }
+                else -> {
+                    Log.e("InformationDialog의 ", "mode가 설정되어있지 않음")
                 }
             }
             dismiss()
@@ -79,11 +66,10 @@ class InformationDialog(context: Context, private val myMode: Int) : Dialog(cont
             // 회원가입 성공시
             // noButton 누르면 처음 화면으로 돌아감.
             if (myMode == 1) {
-                if (context is Activity) {
-                    ActivityCompat.finishAffinity(context as Activity)
-                }
+                activity.finish()
             }
             dismiss()
         }
     }
 }
+
