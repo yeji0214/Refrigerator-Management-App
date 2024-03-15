@@ -35,6 +35,11 @@
             android:exported="true"
             android:theme="@style/AppTheme">
         </activity>
+        <activity
+            android:name=".RefrigeratorActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>
