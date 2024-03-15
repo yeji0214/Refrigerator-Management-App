@@ -2,12 +2,9 @@ package com.example.refrigerator_management_app_kotlin
 
 import android.app.Activity
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import com.example.refrigerator_management_app_kotlin.databinding.DialogInformationBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -54,8 +51,13 @@ class InformationDialog(private val activity: Activity, private val myMode: Int)
                         activity.finishAffinity()
                     }
                 }
-                else -> {
-                    Log.e("InformationDialog의 ", "mode가 설정되어있지 않음")
+                // 로그아웃
+                2 -> {
+                    firebaseAuth.signOut()
+                    val intent = Intent(activity, StartActivity::class.java)
+                    activity.startActivity(intent)
+                    ActivityCompat.finishAffinity((activity as Activity?)!!)
+                    Log.e("로그아웃 성공", "")
                 }
             }
             dismiss()
