@@ -21,10 +21,10 @@ class RefrigeratorAdapter(private val context: Context, private val viewModel: R
         init {
             // 냉장고 클릭시 카테고리 화면으로 이동.
             itemView.setOnClickListener {
-//                val intent = Intent(context, CategoryActivity::class.java)
-//                intent.putExtra("userUid", userUid)
-//                intent.putExtra("refrigeratorID", refriPlustext.text.toString())
-//                context.startActivity(intent)
+                val intent = Intent(context, CategoryActivity::class.java)
+                intent.putExtra("userUid", userUid)
+                intent.putExtra("refrigeratorID", refriPlustext.text.toString())
+                context.startActivity(intent)
             }
 
             itemView.setOnCreateContextMenuListener(this) // 냉장고를 롱클릭 했을 때 컨텍스트 메뉴가 보이도록 설정한다.
