@@ -1,6 +1,7 @@
 package com.example.refrigerator_management_app_kotlin
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -29,12 +30,13 @@ class RefrigeratorActivity : AppCompatActivity() {
     private lateinit var informationDialog: InformationDialog
     private lateinit var databaseReference: DatabaseReference
     private lateinit var refrigeratorRecyclerView: RecyclerView
-    //private lateinit var refrigeratorAdapter: RefrigeratorAdapter
+    private lateinit var refrigeratorAdapter: RefrigeratorAdapter
     private lateinit var refrigeratorViewModel: RefrigeratorViewModel
     private lateinit var addRefrigeratorDialog: AddRefrigeratorDialog
     private lateinit var addButton: ImageView
     private lateinit var logoutButton: ImageView
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide() // ActionBar를 숨깁니다.
@@ -52,10 +54,10 @@ class RefrigeratorActivity : AppCompatActivity() {
         addButton = activityRefrigeratorBinding.mainAddButton
         logoutButton = activityRefrigeratorBinding.mainLogOutButton
 
-//        refrigeratorAdapter = RefrigeratorAdapter(this@RefrigeratorActivity, refrigeratorViewModel,
-//            userUid.toString()
-//        )
-       // refrigeratorRecyclerView.adapter = refrigeratorAdapter
+        refrigeratorAdapter = RefrigeratorAdapter(this@RefrigeratorActivity, refrigeratorViewModel,
+            userUid.toString()
+        )
+        refrigeratorRecyclerView.adapter = refrigeratorAdapter
         refrigeratorRecyclerView.layoutManager = GridLayoutManager(this, 2)
         refrigeratorRecyclerView.setHasFixedSize(true)
         //refrigeratorRecyclerView.addItemDecoration(RefrigeratorRecyclerviewDeco(40))
@@ -70,10 +72,10 @@ class RefrigeratorActivity : AppCompatActivity() {
         refrigeratorRecyclerView.setHasFixedSize(true)
         //refrigeratorRecyclerView.addItemDecoration(RefrigeratorRecyclerviewDeco(40))
 
-//        val userObserver = Observer<ArrayList<String>> { strings ->
-//            refrigeratorAdapter.notifyDataSetChanged()
-//        }
-//        refrigeratorViewModel.refrigeratorsLiveData.observe(this, userObserver)
+        val userObserver = Observer<ArrayList<String>> { strings ->
+            refrigeratorAdapter.notifyDataSetChanged()
+        }
+        refrigeratorViewModel.refrigeratorsLiveData.observe(this, userObserver)
         registerForContextMenu(refrigeratorRecyclerView)
 
         // addButton 클릭
