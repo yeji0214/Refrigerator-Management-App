@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
                         databaseReference.child("UserAccount").child(userUid!!).child("userId").get().addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 val userUid = firebaseUser.uid
-                                val userId = task.result?.value as String
+                                val userId = task.result?.value?.toString() ?: ""
                                 val intent = Intent(this@LoginActivity, RefrigeratorActivity::class.java)
                                 intent.putExtra("userUid", userUid)
                                 intent.putExtra("userID", userId)
