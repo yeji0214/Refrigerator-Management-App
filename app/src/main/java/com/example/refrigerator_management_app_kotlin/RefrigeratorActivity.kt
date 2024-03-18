@@ -60,17 +60,17 @@ class RefrigeratorActivity : AppCompatActivity() {
         refrigeratorRecyclerView.adapter = refrigeratorAdapter
         refrigeratorRecyclerView.layoutManager = GridLayoutManager(this, 2)
         refrigeratorRecyclerView.setHasFixedSize(true)
-        //refrigeratorRecyclerView.addItemDecoration(RefrigeratorRecyclerviewDeco(40))
+        refrigeratorRecyclerView.addItemDecoration(RefrigeratorRecyclerviewDeco(40))
 
         // ViewModel 설정
         refrigeratorViewModel = ViewModelProvider(this).get(RefrigeratorViewModel::class.java)
         refrigeratorViewModel.setUserId(userUid.toString())
 
         // RecyclerView 설정
-        //refrigeratorRecyclerView.adapter = refrigeratorAdapter
+        refrigeratorRecyclerView.adapter = refrigeratorAdapter
         refrigeratorRecyclerView.layoutManager = GridLayoutManager(this, 2)
         refrigeratorRecyclerView.setHasFixedSize(true)
-        //refrigeratorRecyclerView.addItemDecoration(RefrigeratorRecyclerviewDeco(40))
+        refrigeratorRecyclerView.addItemDecoration(RefrigeratorRecyclerviewDeco(40))
 
         val userObserver = Observer<ArrayList<String>> { strings ->
             refrigeratorAdapter.notifyDataSetChanged()
