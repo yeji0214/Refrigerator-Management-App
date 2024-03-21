@@ -1,30 +1,30 @@
-//package com.example.refrigerator_management_app_kotlin
-//
-//import android.app.Activity.RESULT_OK
-//import android.content.Intent
-//import android.graphics.Bitmap
-//import android.graphics.BitmapFactory
-//import android.net.Uri
-//import android.os.Bundle
-//import android.os.StrictMode
-//import android.provider.MediaStore
-//import android.util.Log
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import android.widget.EditText
-//import android.widget.ImageView
-//import androidx.fragment.app.Fragment
-//import com.google.android.gms.tasks.OnFailureListener
-//import com.google.android.gms.tasks.OnSuccessListener
+package com.example.refrigerator_management_app_kotlin
+
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Bundle
+import android.os.StrictMode
+import android.provider.MediaStore
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageView
+import androidx.fragment.app.Fragment
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 //import com.google.mlkit.vision.common.InputImage
 //import com.google.mlkit.vision.text.Text
 //import com.google.mlkit.vision.text.TextRecognition
 //import com.google.mlkit.vision.text.latin.TextRecognizerOptions
-//import java.text.SimpleDateFormat
-//import java.util.*
-//
-//class AddItemFragment : Fragment() {
+import java.text.SimpleDateFormat
+import java.util.*
+
+class AddItemFragment : Fragment() {
 //    private val itemFragment = 1
 //    private val itemInformationFragment = 2
 //    private val addItemFragment = 3
@@ -198,5 +198,5 @@
 //                }
 //            }
 //    }
-//}
-//
+}
+

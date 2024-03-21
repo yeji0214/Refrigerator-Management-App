@@ -114,8 +114,8 @@ class ItemActivity : AppCompatActivity() {
                 }
             }
             addItemFragment -> {
-//                val addItemFrag = AddItemFragment()
-//                transaction.replace(R.id.fragmentContainerView, addItemFrag)
+                val addItemFrag = AddItemFragment()
+                transaction.replace(R.id.fragmentContainerView, addItemFrag)
             }
             calendarFragment -> {
 //                val calendarFrag = CalendarFragment(this)
