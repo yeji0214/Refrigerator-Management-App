@@ -118,8 +118,8 @@ class ItemActivity : AppCompatActivity() {
                 transaction.replace(R.id.fragmentContainerView, addItemFrag)
             }
             calendarFragment -> {
-//                val calendarFrag = CalendarFragment(this)
-//                transaction.replace(R.id.fragmentContainerView, calendarFrag)
+                val calendarFrag = CalendarFragment(this)
+                transaction.replace(R.id.fragmentContainerView, calendarFrag)
             }
         }
         transaction.commit()
@@ -127,19 +127,19 @@ class ItemActivity : AppCompatActivity() {
 
     // 아이템 정보 업데이트하는 함수
     fun updateItemInformation() {
-//        val nameEditText = findViewById<EditText>(R.id.nameEditText)
-//        val expirationDateEditText = findViewById<EditText>(R.id.expirationDateEditText)
-//        val memoEditText = findViewById<EditText>(R.id.memoEditText)
-//
-//        val name = nameEditText.text.toString()
-//        val expirationDate = expirationDateEditText.text.toString()
-//        val memo = memoEditText.text.toString()
-//
-//        val item = Item(name, expirationDate, memo)
-//        val index = clickItemName?.let { viewModel.getItemIndex(it) }
-//        if (index != null) {
-//            viewModel.updateItem(index, item)
-//        }
+        val nameEditText = findViewById<EditText>(R.id.nameEditText)
+        val expirationDateEditText = findViewById<EditText>(R.id.expirationDateEditText)
+        val memoEditText = findViewById<EditText>(R.id.memoEditText)
+
+        val name = nameEditText.text.toString()
+        val expirationDate = expirationDateEditText.text.toString()
+        val memo = memoEditText.text.toString()
+
+        val item = Item(name, expirationDate, memo)
+        val index = clickItemName?.let { viewModel.getItemIndex(it) }
+        if (index != null) {
+            viewModel.updateItem(index, item)
+        }
     }
 
     /*
