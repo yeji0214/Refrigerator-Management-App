@@ -37,7 +37,7 @@ class RefrigerationCategoryFragment : Fragment() {
 
     private lateinit var viewModel: CategoryViewModel
     private lateinit var recyclerView: RecyclerView
-    //private lateinit var adapter: RefrigerationCategoryAdapter
+    private lateinit var adapter: RefrigerationCategoryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,8 +61,8 @@ class RefrigerationCategoryFragment : Fragment() {
         addRefrigerationCategoryBtn = view.findViewById(R.id.addRefrigerationCategoryBtn)
         viewModel = ViewModelProvider(this).get(CategoryViewModel::class.java)
         recyclerView = view.findViewById(R.id.refrigerationCategoryRecyclerView)
-//        adapter = RefrigerationCategoryAdapter(viewModel, requireContext())
-//        recyclerView.adapter = adapter
+        adapter = RefrigerationCategoryAdapter(viewModel, requireContext())
+        recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
 
@@ -72,7 +72,7 @@ class RefrigerationCategoryFragment : Fragment() {
         registerForContextMenu(recyclerView)
 
         val refrigerationObserver = Observer<ArrayList<String>> { strings ->
-            //adapter.notifyDataSetChanged() // 어댑터에게 데이터가 변경되었다는 것을 알림
+            adapter.notifyDataSetChanged() // 어댑터에게 데이터가 변경되었다는 것을 알림
         }
         viewModel.refrigerationCategorysLiveData.observe(viewLifecycleOwner, refrigerationObserver)
     }
