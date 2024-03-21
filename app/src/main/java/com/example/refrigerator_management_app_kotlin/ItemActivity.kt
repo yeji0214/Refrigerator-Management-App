@@ -108,8 +108,10 @@ class ItemActivity : AppCompatActivity() {
                 transaction.replace(R.id.fragmentContainerView, itemFrag)
             }
             itemInformationFragment -> {
-//                val itemInfoFrag = ItemInformationFragment(clickItemName)
-//                transaction.replace(R.id.fragmentContainerView, itemInfoFrag)
+                val itemInfoFrag = clickItemName?.let { ItemInformationFragment(it) }
+                if (itemInfoFrag != null) {
+                    transaction.replace(R.id.fragmentContainerView, itemInfoFrag)
+                }
             }
             addItemFragment -> {
 //                val addItemFrag = AddItemFragment()

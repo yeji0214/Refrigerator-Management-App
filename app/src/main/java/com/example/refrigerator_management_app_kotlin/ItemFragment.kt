@@ -80,7 +80,7 @@ class ItemFragment : Fragment() {
 
     override fun onCreateContextMenu(menu: ContextMenu, v: View, menuInfo: ContextMenu.ContextMenuInfo?) {
         val inflater = activity?.menuInflater
-        //inflater?.inflate(R.menu.item_context_menu, menu)
+        inflater?.inflate(R.menu.item_context_menu, menu)
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
