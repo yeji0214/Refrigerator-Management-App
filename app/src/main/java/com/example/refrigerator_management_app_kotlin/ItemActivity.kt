@@ -28,8 +28,8 @@ class ItemActivity : AppCompatActivity() {
     private var clickItemName: String? = null
     private lateinit var selectedCategoryTextView: TextView
 
-//    private val viewModel: ItemViewModel by viewModels()
-//    private val allItems = ArrayList<Item>()
+    private val viewModel: ItemViewModel by viewModels()
+    private val allItems = ArrayList<Item>()
 
     private lateinit var itemPreferences: SharedPreferences
     private val sharedPrefFile = "com.example.android.MyApplication3"
@@ -80,7 +80,7 @@ class ItemActivity : AppCompatActivity() {
 
     override fun onCreateContextMenu(menu: ContextMenu, v: View, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
-        //menuInflater.inflate(R.menu.item_context_menu, menu)
+        menuInflater.inflate(R.menu.item_context_menu, menu)
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
@@ -91,8 +91,8 @@ class ItemActivity : AppCompatActivity() {
     fun getRefrigeratorId(): String? = refrigeratorId
     fun getCategory(): String? = category
     fun getType(): String? = type
-//    fun getViewModel(): ItemViewModel = viewModel
-//    fun getAllItems(): ArrayList<Item> = allItems
+    fun fetchViewModel(): ItemViewModel = viewModel
+    fun getAllItems(): ArrayList<Item> = allItems
     fun getClickItemName(): String? = clickItemName
     fun setClickItemName(clickItemName: String) {
         this.clickItemName = clickItemName
@@ -104,8 +104,8 @@ class ItemActivity : AppCompatActivity() {
 
         when (fragment) {
             itemFragment -> {
-                //val itemFrag = ItemFragment()
-                //transaction.replace(R.id.fragmentContainerView, itemFrag)
+                val itemFrag = ItemFragment()
+                transaction.replace(R.id.fragmentContainerView, itemFrag)
             }
             itemInformationFragment -> {
 //                val itemInfoFrag = ItemInformationFragment(clickItemName)
@@ -128,14 +128,16 @@ class ItemActivity : AppCompatActivity() {
 //        val nameEditText = findViewById<EditText>(R.id.nameEditText)
 //        val expirationDateEditText = findViewById<EditText>(R.id.expirationDateEditText)
 //        val memoEditText = findViewById<EditText>(R.id.memoEditText)
-
+//
 //        val name = nameEditText.text.toString()
 //        val expirationDate = expirationDateEditText.text.toString()
 //        val memo = memoEditText.text.toString()
 //
 //        val item = Item(name, expirationDate, memo)
-//        val index = viewModel.getItemIndex(clickItemName)
-//        viewModel.updateItem(index, item)
+//        val index = clickItemName?.let { viewModel.getItemIndex(it) }
+//        if (index != null) {
+//            viewModel.updateItem(index, item)
+//        }
     }
 
     /*
